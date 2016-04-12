@@ -121,6 +121,38 @@ class Admin {
 
 		return $this->client->storeDoc($user, $this->sessionsdb);
 	}
+	
+	/**
+	 * Permanently removes a CouchDB Session
+	 *
+	 *
+	 * @param string $session session
+	 * @return stdClass CouchDB server response
+	 * @throws InvalidArgumentException
+	 */
+	public function deleteSession ($session) {
+		if ( strlen($session) < 1 ) {
+			throw new \InvalidArgumentException("Session can't be empty");
+		}
+		//$this->client->asDocuments();
+		$doc = $this->client->getDoc($session, $this->sessionsdb);
+		$doc->name = $session;
+		return $this->client->deleteDoc($doc, $this->sessionsdb);
+	}
+	
+	/**
+	 * returns the document of a session
+	 *
+	 * @param string $session session to fetch
+	 * @return stdClass CouchDB document
+	 * @throws InvalidArgumentException
+	 */
+	public function getSession ($session) {
+		if ( strlen($session) < 1 ) {
+			throw new \InvalidArgumentException("Session can't be empty");
+		}
+		return $this->client->getDoc($session, $this->sessionsdb);
+	}
 
 	/**
 	* create a user
