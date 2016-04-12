@@ -1,0 +1,15 @@
+{
+    "name": "mryellow/php-on-couchsync",
+    "type": "library",
+    "description": "Couchbase Sync Gateway access in PHP",
+    "keywords": ["couchbase","couch", "db", "apache", "nosql","sync gateway"],
+    "homepage": "https://github.com/mryellow/php-on-couchsync",
+    "license": "GPLv3",
+    "authors": [],
+    "autoload": {
+        "classmap": ["lib/"]
+    },
+    "require": {
+        "php": ">=5.2.0"
+    }
+}
